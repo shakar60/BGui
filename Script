@@ -7,9 +7,9 @@ local player = Players.LocalPlayer
 
 -- Create the main ScreenGui
 local gui = Instance.new("ScreenGui")
-gui.Name = "BGui" -- Changed from "XGui" to "BGui"
+gui.Name = "BGui" -- Changed to "BGui"
 gui.ResetOnSpawn = false -- Ensure the GUI doesn't disappear on reset
-gui.Parent = CoreGui -- Set the GUI parent to CoreGui for the nicer look
+gui.Parent = CoreGui -- Set the GUI parent to CoreGui
 
 -- Create the main frame
 local frame = Instance.new("Frame")
@@ -30,13 +30,13 @@ UICornerOuter.Parent = frame
 
 -- Create the main button
 local bButton = Instance.new("TextButton")
-bButton.Name = "BButton" -- Changed from "XButton" to "BButton"
+bButton.Name = "BButton" -- Changed to "BButton"
 bButton.Size = UDim2.new(0, 180, 0, 60)
 bButton.Position = UDim2.new(0.5, -90, 0.5, -30)
 bButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Dark grey background
 bButton.BorderSizePixel = 0
 bButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- White text
-bButton.Text = "B Gui" -- Changed from "X Gui" to "B Gui"
+bButton.Text = "B Gui" -- Changed to "B Gui"
 bButton.Font = Enum.Font.SourceSans
 bButton.TextSize = 24
 bButton.TextScaled = true -- Makes the text larger
@@ -49,16 +49,17 @@ UICornerButton.Parent = bButton
 
 -- Button click event
 bButton.MouseButton1Click:Connect(function()
+    -- Simulate "B" key press
     local vim = game:GetService("VirtualInputManager")
-    vim:SendKeyEvent(true, Enum.KeyCode.B, false, game) -- Changed from "X" to "B"
+    vim:SendKeyEvent(true, Enum.KeyCode.B, false, game)
 end)
 
--- Key press event to send the key press
+-- Key press event to handle specific actions
 UserInputService.InputBegan:Connect(function(input, isProcessed)
     if isProcessed then return end
-    if input.KeyCode == Enum.KeyCode.B then -- Key to send
-        local vim = game:GetService("VirtualInputManager")
-        vim:SendKeyEvent(true, Enum.KeyCode.B, false, game) -- Changed from "X" to "B"
+    if input.KeyCode == Enum.KeyCode.B then
+        -- Simulate button click
+        bButton:Click()
     end
 end)
 
@@ -86,6 +87,6 @@ end)
 -- Display notification when the GUI is created
 StarterGui:SetCore("SendNotification", {
     Title = "Info";
-    Text = "Type /e killgui To Kill The Gui";
+    Text = "Type /e killgui to kill the GUI.";
     Duration = 15; -- 15 seconds notification
 })
